@@ -39,7 +39,7 @@ def extract_event_statistics(csv_data_path, csv_sprints_path):
         event_database = {}
 
     with open(csv_sprints_path, encoding="utf-8") as csvfile2:
-        sprint_ids = csvfile2.readline()[1:-2].split(",")
+        sprint_ids = csvfile2.readline()[1:-1].split(",")
 
     event_dates = []
 
