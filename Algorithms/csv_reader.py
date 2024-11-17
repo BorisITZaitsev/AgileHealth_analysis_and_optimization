@@ -14,9 +14,9 @@ def extract_event_statistics(csv_data_path, csv_sprints_path):
     # Функция для формирования данных по отклонению от среднего количества событий за день
     def calculate_uniformity(data, days):
         daily_event_count = calculate_event_count(data, days)
-        average_events_per_day = len(data) / len(daily_event_count)
+        average_events_per_day = len(data) // len(daily_event_count)
         for day in daily_event_count:
-            daily_event_count[day] = abs(daily_event_count[day] - average_events_per_day)
+            daily_event_count[day] = (abs(daily_event_count[day] - average_events_per_day))
         return daily_event_count
 
     # Функция для подсчета отмененных событий за день
