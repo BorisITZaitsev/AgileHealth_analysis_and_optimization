@@ -1,4 +1,6 @@
 @echo off
+setlocal
+
 REM Получаем путь к директории, в которой находится данный bat-файл
 set "SCRIPT_DIR=%~dp0"
 cd "%SCRIPT_DIR%"
@@ -17,13 +19,19 @@ if not exist venv (
     python -m venv venv
     echo Установка необходимых пакетов...
     call venv\Scripts\activate
-    pip install tkinter json pandas
+    pip install --upgrade pip
+    REM Удаляем строку с установкой tkinter, так как она не устанавливается через pip
 ) else (
     echo Используем существующую виртуальную среду...
     call venv\Scripts\activate
 )
 
-REM Запуск основного скрипта
+REM Установка необходимых библиотек
+pip install json pandas
+
+REM Запуск вашей программы
 echo Запуск main.py...
-python main.py
+python Algorithms\main.py
+
 pause
+endlocal
